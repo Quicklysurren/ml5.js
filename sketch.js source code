@@ -1,0 +1,35 @@
+let classifier;
+
+function preload() {
+  // ml5 이미지 분류기를 미리 로드
+  classifier = ml5.imageClassifier('MobileNet');
+}
+
+function setup() {
+  createCanvas(400, 400);
+  background(255); // 캔버스 배경을 흰색으로 초기화
+
+  // 올바른 ID로 버튼에 이벤트 리스너 추가
+  select('#birdButton').mousePressed(() => loadAndClassifyImage('bird.jpg'));
+  select('#catButton').mousePressed(() => loadAndClassifyImage('cat.jpg'));
+  select('#DogButton').mousePressed(() => loadAndClassifyImage('Dog.jpg'));
+  select('#capybaraButton').mousePressed(() => loadAndClassifyImage('capybara.jpg'));
+  select('#crocodileButton').mousePressed(() => loadAndClassifyImage('crocodile.jpg'));
+  select('#giraffeButton').mousePressed(() => loadAndClassifyImage('giraffe.jpg'));
+  select('#alpacaButton').mousePressed(() => loadAndClassifyImage('alpaca.jpg'));
+}
+
+function loadAndClassifyImage(imagePath) {
+  loadImage(imagePath, img => {
+    image(img, 0, 0, 400, 400); // 이미지를 캔버스 크기에 맞게 조정
+    classifier.classify(img, (error, results) => {
+      if (error) {
+        console.error(error);
+        return;
+      }
+      console.log(results);
+      createDiv(`Label: ${results[0].label}`).class('result');
+      createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`).class('result');
+    });
+  });
+}
