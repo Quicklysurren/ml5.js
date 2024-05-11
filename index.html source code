@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+    <title>Image Classifier with p5.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/ml5@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ml5@0.5.0/dist/ml5.min.js"></script>
+</head>
+<body>
+    <button id="birdButton">Bird</button>
+    <button id="catButton">cat</button>
+    <button id="DogButton">Dog</button>
+    <button id="capybaraButton">Capybara</button>
+    <button id="crocodileButton">Crocodile</button>
+    <button id="giraffeButton">Giraffe</button>
+    <button id="alpacaButton">Alpaca</button>
+    <script src="sketch.js"></script>
+</body>
+</html>
